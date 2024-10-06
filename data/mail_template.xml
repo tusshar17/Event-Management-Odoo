@@ -1,0 +1,23 @@
+<odoo>
+    <record id="email_template_attendee_confirmation" model="mail.template">
+        <field name="name">Attendee Registration Confirmation</field>
+        <field name="model_id" ref="model_event_management_attendee"/>
+        <field name="subject">Event Registration Confirmation: ${object.event_id.name}</field>
+        <field name="email_from">${('tr.jakhara019@gmail.com' or 'noreply@example.com')|safe}</field>
+        <field name="email_to">${object.email|safe}</field>
+        <field name="body_html">
+            <![CDATA[
+            <p>Hello ${object.name},</p>
+            <p>Thank you for registering for the event <strong>${object.event_id.name}</strong>!</p>
+            <p>Event Details:</p>
+            <ul>
+                <li><strong>Date:</strong> ${object.event_id.date_start}</li>
+                <li><strong>Venue:</strong> ${object.event_id.venue}</li>
+            </ul>
+            <p>We look forward to seeing you!</p>
+            <p>Best regards,</p>
+            <p>The Event Team</p>
+            ]]>
+        </field>
+    </record>
+</odoo>

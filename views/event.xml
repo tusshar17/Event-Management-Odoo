@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <record id="view_event_event_form" model="ir.ui.view">
+        <field name="name">event.event.form</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="venue"/>
+                        <field name="tickets_available" readonly="1"/>
+                        <field name="max_attendees"/>
+                        <field name="description"/>
+
+                    </group>
+                    <notebook>
+                    <page string="Attendees">
+                        <field name="attendees_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="email"/>
+                                <field name="ticket_type"/>
+                                <field name="is_confirmed"/>
+                            </tree>
+                        </field>
+                    </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_event_event_tree" model="ir.ui.view">
+        <field name="name">event.event.form</field>
+        <field name="model">event.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="venue"/>
+                <field name="tickets_available"/>
+                <field name="max_attendees"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_event_management_event" model="ir.actions.act_window">
+        <field name="name">Events</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">event.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+
+
+</odoo>
